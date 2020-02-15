@@ -1,2 +1,7 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>ユーザー一覧</h1>
+
+<% @users.each do |user| %>
+  <hr>
+  <p><span>名前：</span><%= user.name %></p>
+  <p><span>メールアドレス：</span><%= link_to user.email, user_path(user.id) %></p>
+<% end %>
