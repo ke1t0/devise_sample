@@ -1,3 +1,4 @@
 <h1>ツイート</h1>
 <hr>
+<p><span>投稿者：</span><%= link_to @tweet.user.name, user_path(@tweet.user.id) %></p>
 <p><span>ツイート内容：</span><%= @tweet.body %></p>

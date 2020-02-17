@@ -6,13 +6,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
 
   <body>
     <header>
       <nav>
         <% if user_signed_in? %> 
-          Logged in as <strong><%= current_user.name %></strong>.
+          <strong><%= current_user.name %></strong>さんでログインしています
           <%= link_to "新規投稿", new_tweet_path, class: "under-line" %> | 
           <%= link_to "マイページ", user_path(current_user) %> | 
           <%= link_to "ツイート一覧", tweets_path %> | 

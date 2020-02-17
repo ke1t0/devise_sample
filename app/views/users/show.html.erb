@@ -3,8 +3,13 @@
 <hr>
 <p><span>名前：</span><%= @user.name %></p>
 <p><span>メールアドレス：</span><%= @user.email %></p>
-<hr>
 <h3>ツイート一覧</h3>
+<hr>
 <% @tweets.each do |tweet| %>
   <p><%= tweet.body %></p>
+<% end %>
+<h3>ファボツイート一覧</h3>
+<hr>
+<% @favorite_tweets.each do |tweet| %>
+  <p><%= link_to tweet.body, tweet_path(tweet.id) %></p>
 <% end %>

@@ -16,3 +16,13 @@
  a {
    text-decoration: none;
  }
+
+ .fav-btn {
+  font-size: 18px;
+  color: #e54747;
+ }
+
+ .unfav-btn {
+   font-size: 18px;
+   color: gray;
+ }
