@@ -9,5 +9,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @tweets = @user.tweets
     @favorite_tweets = @user.favorite_tweets
+    @comments = @user.comments
   end
 end

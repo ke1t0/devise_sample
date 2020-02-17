@@ -1,4 +1,36 @@
 <h1>ツイート</h1>
 <hr>
-<p><span>投稿者：</span><%= link_to @tweet.user.name, user_path(@tweet.user.id) %></p>
-<p><span>ツイート内容：</span><%= @tweet.body %></p>
+<h4><%= link_to @tweet.user.name, user_path(@tweet.user.id) %></h4>
+<p><%= @tweet.body %></p>
+<% if @tweet.favorited_by?(current_user) %>
+    <p>
+      <%= link_to tweet_favorites_path(@tweet.id), method: :delete do %>
+        <i class="fa fa-heart fav-btn"></i><%= @tweet.favorites.count %>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to tweet_favorites_path(@tweet.id), method: :post do %>
+        <% if @tweet.favorites.count == 0 %>
+          <i class="fa fa-heart unfav-btn"></i>
+        <% else %>
+          <i class="fa fa-heart unfav-btn"></i><%= @tweet.favorites.count %>
+        <% end %>
+      <% end %>
+    </p>
+  <% end %>
+
+<h3>返信</h3>
+<%= form_for([@tweet, @comment]) do |f| %>
+  <h4>
+    <%= f.label :body, "コメント" %>
+    <%= f.text_field :body %>
+  </h4>
+  <%= f.submit %>
+<% end %>
+
+<% @comments.each do |comment| %>
+  <hr>
+  <h4><%= link_to comment.user.name, user_path(comment.user.id) %></h4>
+  <p><%= comment.body %></p>
+<% end %>

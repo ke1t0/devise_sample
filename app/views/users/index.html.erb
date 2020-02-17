@@ -2,6 +2,5 @@
 
 <% @users.each do |user| %>
   <hr>
-  <p><span>名前：</span><%= user.name %></p>
-  <p><span>メールアドレス：</span><%= link_to user.email, user_path(user.id) %></p>
+  <p><span>名前：</span><%= link_to user.name, user_path(user.id) %></p>
 <% end %>

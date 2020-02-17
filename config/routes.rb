@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :users
   resources :tweets do
     resource :favorites, only: [:create, :destroy]
+    resource :comments, only: [:create, :destroy]
   end
 end

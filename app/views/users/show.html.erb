@@ -6,10 +6,15 @@
 <h3>ツイート一覧</h3>
 <hr>
 <% @tweets.each do |tweet| %>
-  <p><%= tweet.body %></p>
+  <p><%= link_to tweet.body, tweet_path(tweet.id) %></p>
 <% end %>
 <h3>ファボツイート一覧</h3>
 <hr>
 <% @favorite_tweets.each do |tweet| %>
   <p><%= link_to tweet.body, tweet_path(tweet.id) %></p>
+<% end %>
+<h3>コメント一覧</h3>
+<hr>
+<% @comments.each do |comment| %>
+  <p><%= link_to comment.body, tweet_path(comment.tweet.id) %></p>
 <% end %>
