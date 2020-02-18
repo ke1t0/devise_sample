@@ -2,7 +2,19 @@
 
 <hr>
 <p><span>名前：</span><%= @user.name %></p>
-<p><span>メールアドレス：</span><%= @user.email %></p>
+<% if current_user == @user %>
+  <p><span>メールアドレス：</span><%= @user.email %></p>
+<% end %>
+<p><%= link_to "フォロー", follows_user_path(@user.id) %></p>
+<p><%= link_to "フォロワー",  followers_user_path(@user.id) %></p>
+<% if current_user != @user %>
+  <% if @user.followed_by?(current_user) %>
+    <p><%= link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></p>
+  <% else %>
+    <p><%= link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+  <% end %>
+<% end %>
+
 <h3>ツイート一覧</h3>
 <hr>
 <% @tweets.each do |tweet| %>
