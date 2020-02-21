@@ -8,12 +8,15 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
-    @tweet.save
-    redirect_to tweets_path
+    if @tweet.save
+      redirect_to tweets_path
+    else
+      redirect_to new_tweet_path
+    end
   end
 
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.all.search(params[:search])
   end
 
   def show
@@ -22,9 +25,15 @@ class TweetsController < ApplicationController
     @comments = @tweet.comments
   end
 
+  def destroy
+    @tweet = Tweet.find_by(user_id: current_user.id)
+    @tweet.destroy
+    redirect_to tweets_path
+  end
+
   private
 
     def tweet_params
-      params.require(:tweet).permit(:body)
+      params.require(:tweet).permit(:body, :image)
     end
 end

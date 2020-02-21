@@ -1,15 +1,17 @@
-<h1>ユーザー情報</h1>
+<div class="container color-box">
+<p class="notice"><%= notice %></p>
+  <h1>ユーザー情報</h1>
 
 <hr>
-<p><span>名前：</span><%= @user.name %></p>
+<h5><span>名前：</span><%= @user.name %></h5>
 <% if current_user == @user %>
-  <p><span>メールアドレス：</span><%= @user.email %></p>
+  <h5><span>メールアドレス：</span><%= @user.email %></h5>
 <% end %>
 <p><%= link_to "フォロー", follows_user_path(@user.id) %></p>
 <p><%= link_to "フォロワー",  followers_user_path(@user.id) %></p>
 <% if current_user != @user %>
   <% if @user.followed_by?(current_user) %>
-    <p><%= link_to "フォロー済み", user_relationships_path(@user.id), method: :delete %></p>
+    <p><%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete %></p>
   <% else %>
     <p><%= link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
   <% end %>
@@ -30,3 +32,4 @@
 <% @comments.each do |comment| %>
   <p><%= link_to comment.body, tweet_path(comment.tweet.id) %></p>
 <% end %>
+</div>

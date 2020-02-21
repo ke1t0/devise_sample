@@ -1,9 +1,11 @@
-<h1>新規投稿</h1>
+<div class="container col-md-7 new-post">
+  <h1>新規投稿</h1>
 
-<%= form_for @tweet do |f| %>
-  <p>
-    <%= f.label :body, "ツイート" %>
-    <%= f.text_field :body %>
-  </p>
-  <%= f.submit %>
-<% end %>
+  <%= form_for @tweet do |f| %>
+    <p>
+      <%= f.text_area :body %>
+      <%= f.file_field :image, class: "textarea" %>
+    </p>
+    <%= f.submit "投稿する", class: "btn btn-outline-warning" %>
+  <% end %>
+</div>

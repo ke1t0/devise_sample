@@ -1,11 +1,16 @@
-<h1>ツイート一覧</h1>
+<div class="container color-box">
+  <h1>ツイート一覧</h1>
 
 <% @tweets.each do |tweet| %>
   <hr>
-  <h4><%= link_to tweet.user.name, user_path(tweet.user.id) %></h4>
+  <h5><%= link_to tweet.user.name, user_path(tweet.user.id) %></h5>
   <p>
     <%= link_to tweet.body, tweet_path(tweet.id) %>
   </p>
+    <%= image_tag tweet.image.url if tweet.image? %>
+    <% if current_user == tweet.user %>
+      <p><%= link_to "削除する", tweet_path(tweet.id), method: :delete, data: {confirm: "本当に消しますか？"} %></p>
+    <% end %>
   <% if tweet.favorited_by?(current_user) %>
     <p>
       <%= link_to tweet_favorites_path(tweet.id), method: :delete do %>
@@ -25,9 +30,11 @@
   <% end %>
   <% if current_user != tweet.user %>
     <% if tweet.user.followed_by?(current_user) %>
-      <p><%=link_to "フォロー済み", user_relationships_path(tweet.user.id), method: :delete %></p>
+      <p><%=link_to "フォロー中", user_relationships_path(tweet.user.id), method: :delete %></p>
     <% else %>
       <p><%=link_to "フォローする", user_relationships_path(tweet.user.id), method: :post %></p>
     <% end %>
   <% end %>
+  <p><span><%= tweet.created_at.strftime("%Y-%m-%d %H:%M") %></span></p>
 <% end %>
+</div>

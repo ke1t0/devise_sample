@@ -6,6 +6,13 @@ class ApplicationController < ActionController::Base
     user_path(resource)
   end
 
+  # def self.search(search)
+    # name_ids = User.where(['name LIKE ?', "%#{search}%"]).pluck(:name)
+    # tweet_ids = Tweet.where(['body LIKE ?', "%#{search}%"]).pluck(:body)
+    # search_colmn = name_ids | tweet_ids
+
+  # end
+
   # def after_sign_up_path_for(resource)
   #   user_path(resource)
   # end

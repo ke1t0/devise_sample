@@ -1,0 +1,198 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+body {
+  font-family: 'Lato', 'Noto Sans JP', '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
+p {
+  margin-bottom: 0.3rem;
+}
+a {
+  color: #0066c0;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+hr {
+  margin: 0.3rem 0;
+}
+.btn-outline-warning {
+  color: rgb(223, 150, 16);
+  border-color: rgb(223, 150, 16);
+  &:hover {
+    background-color: rgb(223, 150, 16);
+    color: white;
+  }
+}
+// ヘッダー
+header {
+  background-color: rgba(0, 0, 0, 0.76);
+  font-size: 0.9rem;
+}
+.nav {
+  li {
+    padding: 0.8em;
+    a {
+      position: relative;
+      display: inline-block;
+      // padding: 0.5rem;
+      color: #fff;
+      &:before {
+        content: "";
+        position: absolute;
+        display: block;
+        background-color: rgb(223, 150, 16);
+        width: 0;
+        height: 3px;
+        bottom: -7px;
+        left: 0;
+        -webkit-transition: .4s ease 0s;
+      }
+      &:hover {
+        &:before {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+
+.hover_nav a {
+  position: relative;
+  display: inline-block;
+  font-size: 2.0rem;
+  font-weight: bold;
+  color: #333;
+}
+.hover_nav a:before {
+  content: "";
+  position: absolute;
+  display: block;
+  background-color: #191919;
+  width: 0;
+  height: 3px;
+  bottom: -2px;
+  left: 0;
+  -webkit-transition: .4s ease 0s;
+  transition: .4s ease 0s;
+}
+.hover_nav a:hover {
+  text-decoration: none;
+}
+.hover_nav a:hover:before {
+  width: 100%;
+}
+
+// フラッシュ
+.alert {
+  color: red;
+  font-weight: bold;
+}
+.notice {
+  color: green;
+  font-weight: bold;
+}
+#error_explanation {
+  color: red;
+  ul {
+    list-style: none;
+    li {
+      font-weight: bold;
+    }
+  }
+}
+
+/* ログイン */
+.form {
+  border-top: double 7px rgb(223, 150, 16);
+  border-bottom: double 7px rgb(223, 150, 16);
+  padding: 1rem;
+  text-align: center;
+  margin: 10px auto;
+}
+.login-field {
+  input {
+    width: 15rem;
+  }
+}
+/* 新規登録 */
+.field {
+  input {
+    width: 15rem;
+  }
+}
+.signup-btn {
+  padding: 10px 0;
+}
+.password-btn {
+  padding: 10px 0;
+  input {
+    padding: 10px 30px;
+  }
+}
+.change-password-btn {
+  margin: 10px 0;
+}
+// 検索フォーム
+.search {
+  display: flex;
+  input {
+    margin-bottom: 5px;
+    font-size: 0.6rem;
+  }
+}
+.search-user-btn {
+  margin-right: 1rem;
+}
+
+// お気に入りボタン
+.fav-btn {
+  font-size: 18px;
+  color: #e54747;
+}
+.unfav-btn {
+  font-size: 18px;
+  color: gray;
+}
+// 新規投稿
+.new-post {
+  padding: 4rem;
+  text-align: center;
+  border-top: double 7px rgb(223, 150, 16);
+  border-bottom: double 7px rgb(223, 150, 16);
+  textarea {
+    width: 400px;
+    height: 15rem;
+    font-size: 1.3rem;
+    box-shadow: 1px 1px 2px 1px #707070 inset;
+    border: #616d77;
+  }
+}
+.textarea {
+  box-shadow: 1px 1px 2px 0 #707070 inset;
+}
+// マイページ
+.color-box {
+  border-top: double 7px rgb(223, 150, 16);
+  border-bottom: double 7px rgb(223, 150, 16);
+  padding: 3rem;
+  margin-bottom: 1rem;
+}
+// マイページ編集
+.editbtn {
+  margin: 0.8rem 0;
+}

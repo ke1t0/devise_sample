@@ -1,0 +1,8 @@
+<div class="container color-box">
+  <h1>ユーザー検索一覧</h1>
+
+<% @users.each do |user| %>
+  <hr>
+  <h5><%= link_to user.name, user_path(user.id) %></h5>
+<% end %>
+</div>

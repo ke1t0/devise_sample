@@ -3,32 +3,55 @@
   <head>
     <title>DeviseSample</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# フォントのリンク %>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+JP:400,700" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
-      <nav>
-        <% if user_signed_in? %> 
-          <strong><%= current_user.name %></strong>さんでログインしています
-          <%= link_to "新規投稿", new_tweet_path, class: "under-line" %> | 
-          <%= link_to "マイページ", user_path(current_user) %> | 
-          <%= link_to "ツイート一覧", tweets_path %> | 
-          <%= link_to "ユーザー一覧", users_path %> | 
-          <%= link_to 'プロフィール変更', edit_user_registration_path %> |
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "サインイン", new_user_registration_path %> |
-          <%= link_to "ログイン", new_user_session_path %>
+    <header class="navbar">
+      <div class="container">
+        <nav>
+          <ul class="nav">
+            <% if user_signed_in? %> 
+              <li class="newpost-nav"><%= link_to "新規投稿", new_tweet_path %></li>
+              <li class="mypage-nav"><%= link_to "マイページ", user_path(current_user) %></li>
+              <li class="tweets-nav"><%= link_to "ツイート一覧", tweets_path %></li>
+              <li class="users-nav"><%= link_to "ユーザー一覧", users_path %></li>
+              <li class="profile-nav"><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
+              <li class="logout-nav"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li class="signin-nav"><%= link_to "サインイン", new_user_registration_path %></li>
+              <li class="login-nav"><%= link_to "ログイン", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+        <% if user_signed_in? %>
+          <div class="search">
+            <%= form_tag(searches_user_path, method: :get) do %>
+              <%= text_field_tag :search %>
+              <%= submit_tag 'ユーザー検索', :name => nil, class: "btn btn-outline-warning search-user-btn" %>
+            <% end %>
+            <%= form_tag(searches_tweet_path, method: :get) do %>
+              <%= text_field_tag :tweet %>
+              <%= submit_tag 'ツイート検索', :body => nil, class: "btn btn-outline-warning" %>
+            <% end %>
+          </div>
         <% end %>
-      </nav>
+      </div>
     </header>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
