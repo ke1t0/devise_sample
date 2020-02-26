@@ -1,0 +1,22 @@
+<div class="container color-box">
+  <h1>DM</h1>
+  <h4>参加者</h4>
+  <% @entries.each do |e| %>
+    <h5><strong><%= link_to e.user.email, user_path(e.user.id) %></strong></h5>
+  <% end %>
+  <hr>
+  <% if @messages.present? %>
+    <% @messages.each do |m| %>
+      <strong><%= m.content %></strong>
+      <small>by<strong><%= link_to m.user.name, user_path(m.user.id) %></strong></small>
+    <% end %>
+  <% else %>
+    <h3 class="text-center">メッセージはまだありません。</h3>
+  <% end %>
+  <%= form_for @message do |f| %>
+    <%= f.text_field :content, placeholder: "メッセージを入力してください。", size: 70 %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <br>
+    <%= f.submit "送信", class: "btn btn-outline-warning" %>
+  <% end %>
+</div>
