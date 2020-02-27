@@ -18,14 +18,8 @@
     <% end %>
   <% end %>
 <% end %>
-<p>
-  <%= @user.following.count %>
-  <%= link_to "フォロー", follows_user_path(@user.id) %>
-</p>
-<p>
-  <%= @user.followers.count %>
-  <%= link_to "フォロワー",  followers_user_path(@user.id) %>
-</p>
+<p><%= link_to "#{@user.following.count}フォロー", follows_user_path(@user.id) %></p>
+<p><%= link_to "#{@user.followers.count}フォロワー",  followers_user_path(@user.id) %></p>
 <% if current_user != @user %>
   <% if @user.followed_by?(current_user) %>
     <p><%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete %></p>
