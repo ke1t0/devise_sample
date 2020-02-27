@@ -19,10 +19,6 @@ class RoomsController < ApplicationController
     end
   end
 
-  def index
-    @rooms = Room.all
-  end
-
   private
     def entry_params
       params.require(:entry).permit(:room_id, :user_id).merge(room_id: @room.id)

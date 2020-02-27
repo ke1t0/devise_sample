@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20200224003251) do
     t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["following_id", "follower_id"], name: "index_relationships_on_following_id_and_follower_id", unique: true
   end
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

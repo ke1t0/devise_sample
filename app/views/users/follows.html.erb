@@ -1,5 +1,5 @@
 <div class="container color-box">
-  <h1>User follows</h1>
+  <h1>User following</h1>
 <% @users.each do |user| %>
   <hr>
   <p><span>名前： </span><%= link_to user.name, user_path(user.id) %></p>
