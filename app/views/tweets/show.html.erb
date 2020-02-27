@@ -39,5 +39,8 @@
     <hr>
     <h6><%= link_to comment.user.name, user_path(comment.user.id) %></h6>
     <p><%= comment.body %></p>
+    <% if current_user == comment.user %>
+      <%= link_to "削除", tweet_comments_path(comment.tweet.id), method: :delete %>
+    <% end %>
   <% end %>
 </div>
