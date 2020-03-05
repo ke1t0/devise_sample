@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## rails tutorialで学習したことのアウトプットになります。
+自分なりに考え、調べて実装しました。
+まだまだ技術が足りていないため、学習を続けていきます。
 
-Things you may want to cover:
+### 使用技術
+* Ruby
+* Ruby on rails
+* JavaScript
 
-* Ruby version
+### 主な機能
+* ユーザー認証（devise）
+* フォロー機能
+* 投稿機能
+* お気に入り機能
+* コメント機能
+* DM機能
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 今後やりたいこと
+* フォロー機能、お気に入り機能をAjaxを使用して利用者への負担軽減。
+* フロントエンドをjs、Reactを使って充実させる。
+* Rspecを使いテストをしっかりと行う。
